@@ -1,40 +1,37 @@
 import React from 'react';
-import {
-  // SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  // Text,
-  // StatusBar,
-  Image,
-} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, Image} from 'react-native';
 
 import Chat from '../components/chat.js';
 
-const Screen2 = () => {
+const Screen2 = ({navigation}) => {
   return (
     <View>
       <ScrollView style={styles.screen}>
-        <Chat name={'Waqar'} />
+        <Chat name={'Waqar'} value={'2'} />
         <Chat name={'Ali'} />
         <Chat name={'Rizwan'} />
-        <Chat name={'Asad'} />
+        <Chat name={'Asad'} value={'1'} />
         <Chat name={'Asif'} />
         <Chat name={'Irfan'} />
+        <Text
+          style={styles.convo}
+          onPress={() => navigation.navigate('screen3', {name: 'contacts'})}>
+          Start New Conversation
+        </Text>
       </ScrollView>
 
       <View style={styles.tab}>
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/iconn.png')}
         />
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/person.png')}
         />
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/iconn.png')}
         />
       </View>
     </View>
@@ -48,10 +45,8 @@ const styles = StyleSheet.create({
     height: '92%',
   },
   tab: {
-    // position: 'fixed',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    // marginTop: 10,
     padding: 10,
     borderTopWidth: 1,
     borderColor: '#ABDBFB',
@@ -59,6 +54,9 @@ const styles = StyleSheet.create({
   icon: {
     width: 40,
     height: 40,
+  },
+  convo: {
+    textAlign: 'center',
   },
 });
 

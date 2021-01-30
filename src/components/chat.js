@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  // ScrollView,
-  View,
-  Text,
-  // StatusBar,
-  Image,
-} from 'react-native';
+import {StyleSheet, View, Text, Image} from 'react-native';
 
 const Chat = (props) => {
   return (
@@ -16,8 +9,16 @@ const Chat = (props) => {
         source={require('../assets/images/headshot.png')}
       />
       <View style={styles.chat}>
-        <Text style={styles.name}>{props.name}</Text>
-        <Text style={styles.message}>lorem ipsum dolor sit amet</Text>
+        <View style={styles.wrap}>
+          <Text style={styles.name}>{props.name}</Text>
+          <Text style={styles.date}>30/1/2021</Text>
+        </View>
+        <View style={styles.msgwrap}>
+          <Text style={styles.message}>lorem ipsum dolor sit amet</Text>
+          <Text style={props.value ? styles.notification : 'none'}>
+            {props.value}
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -26,20 +27,16 @@ const Chat = (props) => {
 const styles = StyleSheet.create({
   chatBox: {
     margin: 5,
-    // padding: 10,
     flexDirection: 'row',
-    // justifyContent: 'flex-start',
   },
   photo: {
     width: 60,
     height: 60,
     borderRadius: 50,
     margin: 10,
-    // padding: 10,
   },
   chat: {
-    // margin: 10,
-    padding: 15,
+    padding: 10,
     paddingBottom: 25,
     borderBottomWidth: 1,
     borderBottomColor: '#ABDBFB',
@@ -51,6 +48,23 @@ const styles = StyleSheet.create({
   },
   message: {
     fontSize: 16,
+  },
+  wrap: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  date: {
+    fontSize: 12,
+    paddingVertical: 5,
+  },
+  msgwrap: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  notification: {
+    paddingHorizontal: 6,
+    borderRadius: 10,
+    backgroundColor: '#93C95F',
   },
 });
 

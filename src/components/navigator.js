@@ -1,12 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
+import 'react-native-gesture-handler';
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+// import { enableScreens } from 'react-native-screens';
 
 // import {
 //   SafeAreaView,
@@ -17,23 +13,35 @@ import React from 'react';
 //   StatusBar,
 // } from 'react-native';
 
-// import {
-//   Header,
-//   LearnMoreLinks,
-//   Colors,
-//   DebugInstructions,
-//   ReloadInstructions,
-// } from 'react-native/Libraries/NewAppScreen';
+// enableScreens();
+const Stack = createStackNavigator();
+// const Tabs = createBottomTabNavigator()
 
-// import Screen1 from '../screens/screen1';
-// import Screen2 from '../screens/screen2';
+import Screen1 from '../screens/screen1';
+import Screen2 from '../screens/screen2';
 import Screen3 from '../screens/screen3';
 
 const Navigator = () => {
   return (
-    <>
-      <Screen3 />
-    </>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          name="screen1"
+          component={Screen1}
+          options={{title: 'Store'}}
+        />
+        <Stack.Screen
+          name="screen2"
+          component={Screen2}
+          options={({route}) => ({title: route.params.name})}
+        />
+        <Stack.Screen
+          name="screen3"
+          component={Screen3}
+          options={({route}) => ({title: route.params.name})}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

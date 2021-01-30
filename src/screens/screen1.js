@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  // SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  // StatusBar,
-  Image,
-} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, Image} from 'react-native';
 
 // import {
 //   Header,
@@ -17,7 +9,7 @@ import {
 //   ReloadInstructions,
 // } from 'react-native/Libraries/NewAppScreen';
 
-const Screen1 = () => {
+const Screen1 = ({navigation}) => {
   return (
     <View>
       <ScrollView style={styles.body}>
@@ -89,24 +81,33 @@ const Screen1 = () => {
             source={require('../assets/images/four.jpg')}
           />
         </ScrollView>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate('screen2', {name: 'chat'})}>
+          Chat
+        </Text>
       </ScrollView>
 
       <View style={styles.tab}>
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/iconn.png')}
         />
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/gallery.png')}
+        />
+        <Image
+          style={styles.addbutton}
+          source={require('../assets/icons/addIcon.png')}
         />
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/iconn.png')}
         />
         <Image
           style={styles.icon}
-          source={require('../assets/icons/icon.png')}
+          source={require('../assets/icons/person.png')}
         />
       </View>
     </View>
@@ -140,12 +141,10 @@ const styles = StyleSheet.create({
   photo: {
     margin: 5,
     borderRadius: 10,
-    // height: 10,
     width: 100,
     aspectRatio: 0.5,
   },
   tab: {
-    // position: 'fixed',
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
@@ -154,6 +153,14 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
+  addbutton: {
+    width: 70,
+    height: 70,
+    bottom: 40,
+  },
+  // button: {
+  //   textAlign: 'center',
+  // },
 });
 
 export default Screen1;
